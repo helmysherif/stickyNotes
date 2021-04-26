@@ -1,0 +1,26 @@
+#profile
+{
+    min-height: 100vh;
+    background: #666;
+}
+.note
+{
+    min-height:200px;
+    width:100%;
+    background: #fcc;
+}
+input,textarea
+{
+    box-shadow: none;
+    outline: none;
+    resize: none;
+}
+input:focus,textarea:focus
+{
+    box-shadow: none;
+    outline: none;
+}
+i
+{
+    cursor: pointer;
+}

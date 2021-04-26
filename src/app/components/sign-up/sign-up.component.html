@@ -1,0 +1,45 @@
+<section id="signUp">
+    <div class="container">
+        <form [formGroup] = "signUp" (ngSubmit) = 'signUp.valid&&formData()'>
+            <div class="form w-75 m-auto">
+                <h2 class = "text-white text-center py-5">Register Form</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type = "text" class = "form-control" placeholder = "First Name" formControlName = "first_name" [class.is-valid] = "signUp.get('first_name').status == 'VALID'">
+                        <div *ngIf = "signUp.controls.first_name.errors && signUp.controls.first_name.touched" class="alert alert-danger" role = 'alert'>
+                            First Name Is Required
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type = "text" class = "form-control" placeholder = "Last Name" formControlName = "last_name" [class.is-valid] = "signUp.get('last_name').status == 'VALID'">
+                        <div *ngIf = "signUp.controls.last_name.errors && signUp.controls.last_name.touched" class="alert alert-danger" role = 'alert'>
+                            Last Name Is Required
+                        </div>
+                    </div>
+                </div>
+                <input type = "email" class = "form-control my-4" placeholder = "Email" formControlName = 'email' [class.is-valid] = "signUp.get('email').status == 'VALID'">
+                <div *ngIf = "signUp.controls.email.errors && signUp.controls.email.touched" class="alert alert-danger" role = 'alert'>
+                    Email Is Required
+                </div>
+                <input type = "text" class = "form-control" placeholder = "Age" formControlName = 'age' [class.is-valid] = "signUp.get('age').status == 'VALID'">
+                <div *ngIf = "signUp.controls.age.errors && signUp.controls.age.touched" class="alert alert-danger" role = 'alert'>
+                    Age Is Required
+                </div>
+                <input type = "password" class = "form-control my-4" placeholder = "Password" formControlName = 'password' [class.is-valid] = "signUp.get('password').status == 'VALID'">
+                <div *ngIf = "signUp.controls.password.errors && signUp.controls.password.touched" class="alert alert-danger" role = 'alert'>
+                    Password Is Required
+                </div>
+                <button [disabled] = 'signUp.invalid' [ngStyle] = "signUp.invalid?isStyleInvalid:isStyleValid" class = "btn btn-info w-100 py-2">
+                    <span *ngIf = "!isClicked">SIGNUP</span>
+                    <span *ngIf = "isClicked">Waiting...</span>
+                </button>
+                <div *ngIf = "isSuccess" class = "alert alert-success mt-4 text-center" role = "alert">
+                    {{ responseMessage }}
+                </div>
+                <div *ngIf = "isUniqueEmail" class = "alert alert-danger mt-4 text-center" role = "alert">
+                    {{ isUniqueEmailMsg }}
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
